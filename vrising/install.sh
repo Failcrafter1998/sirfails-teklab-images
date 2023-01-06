@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# TekBase - server control panel
+# Image installer made by SirFail
+
+
 mkdir vrisingdedi
 chmod 777 start.sh; mv start.sh ./vrisingdedi
 chmod 777 installer.sh;./installer.sh steam 1829350 vrisingdedi
