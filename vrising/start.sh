@@ -17,44 +17,6 @@ VAR_G=$7
 
 DATADIR=$(pwd)
 
-function gen_passwd { 
-    PWCHARS=$1
-    [ "$PWCHARS" = "" ] && PWCHARS=16
-    tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${PWCHARS} | xargs
-}
-
-function sed_edit {
-    SETFILE=$1
-    SETVAR=$2
-    SETVALUE=$3
-    SETSEP=$4
-    SETQUOTE=$5
-
-    if ! grep "${SETVAR}${SETSEP}" "${SETFILE}" &>/dev/null; then
-        sed -i "${SETFILE}" -e "s/^\(${SETVAR}${SETSEP}\).*$/\1${SETQUOTE}${SETVALUE}${SETQUOTE}/"
-    else
-        echo "${SETVAR}${SETSEP}${SETQUOTE}${SETVALUE}${SETQUOTE}" >> "${SETFILE}"
-    fi
-}
-
-function workshopid_download {
-    SETLOGIN=$1
-    SETAPPID=$2
-    if [ -d "game" ]; then
-        SETPATH="game"
-    else
-        SETPATH=""
-    fi
-	
-    if [ -f "workshopid.list" ]; then
-        for LINE in $(cat workshopid.list)
-        do
-            if [ "$LINE" != "" ]; then
-                ./steamcmd/steamcmd.sh +login ${SETLOGIN}  +force_install_dir ./${SETPATH} +workshop_download_item ${SETAPPID} ${LINE} +quit
-            fi
-        done
-    fi
-}
 
 if [ "$VAR_A" = "vrising" ]; then
     # ./start.sh vrising gsport gsqueryport gsplayer
