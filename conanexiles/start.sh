@@ -109,5 +109,6 @@ if [ "$VAR_A" = "conan" ]; then
     fi
 
     cd ${returndir}
+    
     xvfb-run --auto-servernum --server-args='-screen 0 1024x768x16 -terminate' bash -c "wine ConanSandboxServer.exe -log -MaxPlayers=${VAR_D} -Port=${VAR_B} -QueryPort=${VAR_C}"
 fi                            
