@@ -3,6 +3,7 @@
 # TekBase - server control panel
 # Copyright since 2005 TekLab
 # Christian Frankenstein
+# Edited by SirFail
 # Website: teklab.de
 #          teklab.net
 
