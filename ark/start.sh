@@ -66,8 +66,8 @@ if [ "$VAR_A" = "ark" ]; then
     fi
     
     # Adminpanel -> game list -> ark -> start folder -> "game" or "" but not "ShooterGame/Binaries/Linux" 
-    SESSION_NAME=$(grep -i "SessionName" ${SETPATH}/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini | awk -F "=" '{print $2}')
-    ADMIN_PASSWORD=$(grep -i "ServerAdminPassword" ${SETPATH}/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini | awk -F "=" '{print $2}')
+    SESSION_NAME=$(grep -i "SessionName" ./ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini | awk -F "=" '{print $2}')
+    ADMIN_PASSWORD=$(grep -i "ServerAdminPassword" ./ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini | awk -F "=" '{print $2}')
     if [ "${SESSION_NAME}" = "" ]; then
         SESSION_NAME="Ark Server"
     fi
