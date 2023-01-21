@@ -4,4 +4,4 @@
 # Image installer made by SirFail
 
 mkdir csgodedi
-chmod 777 installer.sh;./installer.sh steam 740 csgodedi
+chmod 770 installer.sh;./installer.sh steam 740 csgodedi
