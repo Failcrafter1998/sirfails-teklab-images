@@ -18,3 +18,4 @@ echo > maplist/Genesis.bsp
 echo > maplist/CrystalIsles.bsp
 echo > maplist/Gen2.bsp
 echo > maplist/LostIsland.bsp
+echo > maplist/Fjordur.bsp
