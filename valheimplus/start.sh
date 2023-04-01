@@ -48,31 +48,23 @@ if [ "$VAR_A" = "valheim" ]; then
     # read the value of "Weltname"
     weltname=$(grep "Weltname" ./settings.txt | cut -d "=" -f 2)
 
-    executable_name="valheim_server.x86_64"
-    export VALHEIM_PLUS_SCRIPT="$(readlink -f "$0")"
-    export VALHEIM_PLUS_PATH="$(dirname "$VALHEIM_PLUS_SCRIPT")"
+    # BepInEx-specific settings
+    # NOTE: Do not edit unless you know what you are doing!
+    ####
     export DOORSTOP_ENABLE=TRUE
-    export DOORSTOP_INVOKE_DLL_PATH="${VALHEIM_PLUS_PATH}/BepInEx/core/BepInEx.Preloader.dll"
-    export DOORSTOP_CORLIB_OVERRIDE_PATH="${VALHEIM_PLUS_PATH}/unstripped_corlib"
-    doorstop_libs="${VALHEIM_PLUS_PATH}/doorstop_libs"
-    executable_path="${VALHEIM_PLUS_PATH}/${executable_name}"
-	lib_postfix="so"
-    executable_type=$(LD_PRELOAD="" file -b "${executable_path}");
-    arch="x64"
+    export DOORSTOP_INVOKE_DLL_PATH=./BepInEx/core/BepInEx.Preloader.dll
+    export DOORSTOP_CORLIB_OVERRIDE_PATH=./unstripped_corlib
 
-    doorstop_libname=libdoorstop_${arch}.${lib_postfix}
-    export LD_LIBRARY_PATH="${doorstop_libs}":"${LD_LIBRARY_PATH}"
-    export LD_PRELOAD="$doorstop_libname":"${LD_PRELOAD}"
-    export DYLD_LIBRARY_PATH="${doorstop_libs}"
-    export DYLD_INSERT_LIBRARIES="${doorstop_libs}/$doorstop_libname"
+    export LD_LIBRARY_PATH="./doorstop_libs:$LD_LIBRARY_PATH"
+    export LD_PRELOAD="libdoorstop_x64.so:$LD_PRELOAD"
+    ####
 
-    export templdpath="$LD_LIBRARY_PATH"
-    export LD_LIBRARY_PATH="${VALHEIM_PLUS_PATH}/linux64":"${LD_LIBRARY_PATH}"
+
+    export LD_LIBRARY_PATH="./linux64:$LD_LIBRARY_PATH"
     export SteamAppId=892970
 
-    "${VALHEIM_PLUS_PATH}/${executable_name}" -name "$servername" -port "${VAR_B}" -savedir "./saves" -world "$weltname" -password "${VAR_C}" -public "1"
+    ./valheim_server.x86_64 -name "$servername" -port "${VAR_B}" -savedir "./saves" -world "$weltname" -password "${VAR_C}" -public "1"
 
-    export LD_LIBRARY_PATH=$templdpath
 fi
 
 exit 0

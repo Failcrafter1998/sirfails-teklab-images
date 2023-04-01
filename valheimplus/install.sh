@@ -6,7 +6,7 @@
 mkdir valheimplusdedi
 chmod 770 start.sh; mv start.sh ./valheimplusdedi
 chmod 770 installer.sh;./installer.sh steam 896660 valheimplusdedi
-LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/valheimPlus/ValheimPlus/releases/latest")
+LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/Grantapher/ValheimPlus/releases/latest")
 URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[] | select(.name=="UnixServer.tar.gz") | .browser_download_url')
 wget "$URL"
 mv UnixServer.tar.gz ./valheimplusdedi;tar -xf ./valheimplusdedi/UnixServer.tar.gz -C ./valheimplusdedi
