@@ -76,6 +76,6 @@ if [ "$VAR_A" == "www" ]; then
     fi
 fi
 
-rm updater.sh
+rm valplusupdater.sh
     
 exit 0
