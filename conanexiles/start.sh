@@ -23,10 +23,10 @@ if [ "$VAR_A" = "conan" ]; then
     returndir=$(pwd)
 
     # Setzt Variablen (Funktioniert erst beim zweiten Server start, da die Datein erst vom Server generiert werden müssen(Kein Problem die wichtigen werte setzten wir über die Command Line beim starten))
-    if grep -q '^ServerPasswort=' ./ConanSandbox/Saved/Config/WindowsServer/Game.ini; then
-        sed -i "s/^ServerPasswort=.*$/ServerPasswort=${VAR_E}/" ./ConanSandbox/Saved/Config/WindowsServer/Game.ini
+    if grep -q '^ServerPasswort=' ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini; then
+        sed -i "s/^ServerPasswort=.*$/ServerPasswort=${VAR_E}/" ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini
     else
-        echo "ServerPasswort=${VAR_E}" >> ./ConanSandbox/Saved/Config/WindowsServer/Game.ini
+        echo "ServerPasswort=${VAR_E}" >> ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini
     fi
 
     if ! grep -q '^ServerName=' ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini; then
