@@ -24,7 +24,7 @@ if [ "$VAR_A" = "conan" ]; then
 
     # Setzt Variablen (Funktioniert erst beim zweiten Server start, da die Datein erst vom Server generiert werden müssen(Kein Problem die wichtigen werte setzten wir über die Command Line beim starten))
     if grep -q '^ServerPassword=' ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini; then
-        sed -i "s/^ServerPassword=.*$/ServerPasswort=${VAR_E}/" ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini
+        sed -i "s/^ServerPassword=.*$/ServerPassword=${VAR_E}/" ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini
     else
         echo "ServerPassword=${VAR_E}" >> ./ConanSandbox/Saved/Config/WindowsServer/Engine.ini
     fi
