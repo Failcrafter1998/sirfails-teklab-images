@@ -54,6 +54,8 @@ if [ "$VAR_A" = "conan" ]; then
 
     # Auto Mod Updater (Wenn diese Funktion nicht gewünscht ist einfach auskomentieren oder den Code löschen)
 
+    rm ./ConanSandbox/Mods/modlist.txt
+    
     if [ ! -f workshopids.txt ]; then
         touch workshopids.txt # In dieser Datei werden die Workshop ID's eingetragen
     fi
